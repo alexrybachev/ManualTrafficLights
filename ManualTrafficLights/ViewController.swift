@@ -9,11 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var redTrafficLight: UIView!
+    @IBOutlet weak var orangeTrafficLight: UIView!
+    @IBOutlet weak var greenTrafficLight: UIView!
+    
+    
+    @IBOutlet weak var changeLightButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+//        redTrafficLight.backgroundColor?.withAlphaComponent(0.3)
+        
+        changeLightButton.layer.cornerRadius = 10
     }
 
-
+    @IBAction func switchColorTrafficLight() {
+    }
+    
 }
 

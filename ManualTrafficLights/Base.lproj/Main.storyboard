@@ -44,6 +44,9 @@
                                 <state key="normal" title="START">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="switchColorTrafficLight" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wh5-cV-pk0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -57,6 +60,12 @@
                             <constraint firstItem="MUy-OI-BKl" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="yHs-Vd-nPQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="changeLightButton" destination="7di-wb-aC2" id="pLm-po-grn"/>
+                        <outlet property="greenTrafficLight" destination="SuK-ug-XWp" id="03c-NB-SU0"/>
+                        <outlet property="orangeTrafficLight" destination="XB2-vS-ngI" id="OJO-jX-Nzr"/>
+                        <outlet property="redTrafficLight" destination="ezm-Yk-bQ5" id="3Js-tQ-xgj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
