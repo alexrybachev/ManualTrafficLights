@@ -19,12 +19,29 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        redTrafficLight.backgroundColor?.withAlphaComponent(0.3)
-        
+        redTrafficLight.layer.cornerRadius = 50
+        redTrafficLight.alpha = 0.3
+        orangeTrafficLight.layer.cornerRadius = 50
+        orangeTrafficLight.alpha = 0.3
+        greenTrafficLight.layer.cornerRadius = 50
+        greenTrafficLight.alpha = 0.3
+               
         changeLightButton.layer.cornerRadius = 10
     }
 
     @IBAction func switchColorTrafficLight() {
+        changeLightButton.setTitle("NEXT", for: .normal)
+        
+        redTrafficLight.alpha = 1.0
+        
+        if redTrafficLight.alpha == 0.3, orangeTrafficLight.alpha == 0.3 {
+            
+        }
+
+        
+        
+        
+        
     }
     
 }
