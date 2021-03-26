@@ -7,42 +7,64 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+enum TrafficLights: String {
+    case red, yellow, green
+}
 
-    @IBOutlet weak var redTrafficLight: UIView!
-    @IBOutlet weak var orangeTrafficLight: UIView!
-    @IBOutlet weak var greenTrafficLight: UIView!
+class ViewController: UIViewController {
     
+    @IBOutlet weak var redLight: UIView!
+    @IBOutlet weak var yellowLight: UIView!
+    @IBOutlet weak var greenLight: UIView!
     
     @IBOutlet weak var changeLightButton: UIButton!
+    
+    private var currentLight = TrafficLights.red
+    private let lightsOn: CGFloat = 1
+    private let lightsOff: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redTrafficLight.layer.cornerRadius = 50
-        redTrafficLight.alpha = 0.3
-        orangeTrafficLight.layer.cornerRadius = 50
-        orangeTrafficLight.alpha = 0.3
-        greenTrafficLight.layer.cornerRadius = 50
-        greenTrafficLight.alpha = 0.3
-               
         changeLightButton.layer.cornerRadius = 10
-    }
-
-    @IBAction func switchColorTrafficLight() {
-        changeLightButton.setTitle("NEXT", for: .normal)
         
-        redTrafficLight.alpha = 1.0
+        redLight.alpha = lightsOff
+        yellowLight.alpha = lightsOff
+        greenLight.alpha = lightsOff
         
-        if redTrafficLight.alpha == 0.3, orangeTrafficLight.alpha == 0.3 {
-            
-        }
-
-        
-        
-        
-        
+        print("Размер стороны, доступный в методе viewDidLoad: \(redLight.frame.height)")
     }
     
+    override func viewWillLayoutSubviews() {
+        redLight.layer.cornerRadius = redLight.frame.height / 2
+        yellowLight.layer.cornerRadius = yellowLight.frame.height / 2
+        greenLight.layer.cornerRadius = greenLight.frame.height / 2
+        
+        print("Размер стороны, доступный в методе viewWillLayoutSubviews: \(redLight.frame.height)")
+    }
+    
+    @IBAction func switchColorTrafficLight() {
+        if changeLightButton.currentTitle == "START" {
+            changeLightButton.setTitle("NEXT", for: .normal)
+        }
+        
+        switch currentLight {
+        case .red:
+            redLight.alpha = lightsOn
+            yellowLight.alpha = lightsOff
+            greenLight.alpha = lightsOff
+            currentLight = .yellow
+        case .yellow:
+            redLight.alpha = lightsOff
+            yellowLight.alpha = lightsOn
+            greenLight.alpha = lightsOff
+            currentLight = .green
+        default:
+            redLight.alpha = lightsOff
+            yellowLight.alpha = lightsOff
+            greenLight.alpha = lightsOn
+            currentLight = .red
+        }
+    }
 }
 
